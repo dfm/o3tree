@@ -1,0 +1,36 @@
+[build-system]
+requires = ["maturin>=0.14,<0.15"]
+build-backend = "maturin"
+
+[project]
+name = "o3tree"
+dynamic = ["version"]
+authors = [{ name = "Example Author", email = "author@example.com" }]
+description = "A small example package"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = ["numpy"]
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
+python-source = "python"
+
+[tool.black]
+target-version = ["py38", "py39"]
+line-length = 88
+
+[tool.ruff]
+line-length = 89
+update-check = false
+target-version = "py38"
+select = ["F", "I", "E", "W", "YTT", "B", "Q", "PLE", "PLW"]
+ignore = [
+    "E741", # Allow ambiguous variable names (e.g. "l" in starry)
+    "B023", # Allow using global variables in lambdas
+]
+exclude = []
